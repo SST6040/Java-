@@ -1,0 +1,31 @@
+class Solution {
+    public boolean isPalindrome(int x) {
+        int revertedNum = 0;
+        
+        //knowing that negative number will not be the accepted answer, so <0 will return false
+        //knowing that if the reverted number start with 0, the original number will also start with 0. But there should not be any number that is start with 0, therefore, the second chunk of parameter determine this condition and return false.
+        if (x <0 || x != 0 && x%10 == 0){
+            return false;
+        }
+        
+        while (x>revertedNum){
+            revertedNum = revertedNum *10 + x%10;
+            x = x/10;
+            
+        }
+        
+        
+        //the reason why /10 is because, if there is an odd number, the middle digit always will be ignored. therefore, for 12321 (odd number), we divide by 10 on the revertedNum (eg:123) and compare with final x (eg:12), it will be the same now and it will return true. 
+        if (x== revertedNum || x == revertedNum / 10){
+            return true;
+        }
+        
+        else {
+            return false;
+        }
+        
+        
+        
+        
+    }
+}
